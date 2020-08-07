@@ -4,7 +4,7 @@ import axios from 'axios';
 export const saveBook = book => {
     return dispatch => {
         dispatch(saveBookRequest());
-        axios.post("http://localhost:8081/rest/books", book)
+        axios.post("http://localhost:8081/rest/books", book, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -29,7 +29,7 @@ const fetchBookRequest = () => {
 export const fetchBook = bookId => {
     return dispatch => {
         dispatch(fetchBookRequest());
-        axios.get("http://localhost:8081/rest/books/"+bookId)
+        axios.get("http://localhost:8081/rest/books/"+bookId, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -48,7 +48,7 @@ const updateBookRequest = () => {
 export const updateBook = book => {
     return dispatch => {
         dispatch(updateBookRequest());
-        axios.put("http://localhost:8081/rest/books", book)
+        axios.put("http://localhost:8081/rest/books", book, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -67,7 +67,7 @@ const deleteBookRequest = () => {
 export const deleteBook = bookId => {
     return dispatch => {
         dispatch(deleteBookRequest());
-        axios.delete("http://localhost:8081/rest/books/"+bookId)
+        axios.delete("http://localhost:8081/rest/books/"+bookId, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
