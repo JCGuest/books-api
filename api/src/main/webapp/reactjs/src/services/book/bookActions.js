@@ -4,7 +4,11 @@ import axios from 'axios';
 export const saveBook = book => {
     return dispatch => {
         dispatch(saveBookRequest());
-        axios.post("http://localhost:8081/rest/books", book, {withCredentials: true})
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'},
+            withCredentials: true
+        };
+        axios.post("http://localhost:8081/rest/books", book, config)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -29,7 +33,11 @@ const fetchBookRequest = () => {
 export const fetchBook = bookId => {
     return dispatch => {
         dispatch(fetchBookRequest());
-        axios.get("http://localhost:8081/rest/books/"+bookId, {withCredentials: true})
+        let config = {
+    headers: {'Access-Control-Allow-Origin': '*'},
+    withCredentials: true
+};
+        axios.get("http://localhost:8081/rest/books/"+bookId, config)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -48,7 +56,11 @@ const updateBookRequest = () => {
 export const updateBook = book => {
     return dispatch => {
         dispatch(updateBookRequest());
-        axios.put("http://localhost:8081/rest/books", book, {withCredentials: true})
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'},
+            withCredentials: true
+        };
+        axios.put("http://localhost:8081/rest/books", book, config)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -67,7 +79,11 @@ const deleteBookRequest = () => {
 export const deleteBook = bookId => {
     return dispatch => {
         dispatch(deleteBookRequest());
-        axios.delete("http://localhost:8081/rest/books/"+bookId, {withCredentials: true})
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'},
+            withCredentials: true
+        };
+        axios.delete("http://localhost:8081/rest/books/"+bookId, config)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -90,3 +106,4 @@ const bookFailure = error => {
         payload: error
     };
 };
+

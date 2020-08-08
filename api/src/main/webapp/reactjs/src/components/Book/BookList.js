@@ -45,7 +45,11 @@ class BookList extends Component {
 
     findAllBooks(currentPage) {
         currentPage -= 1;
-        axios.get("http://localhost:8081/rest/books?pageNumber="+currentPage+"&pageSize="+this.state.booksPerPage+"&sortBy=price&sortDir="+this.state.sortDir)
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'},
+            withCredentials: true
+        };
+        axios.get("http://localhost:8081/rest/books?pageNumber="+currentPage+"&pageSize="+this.state.booksPerPage+"&sortBy=price&sortDir="+this.state.sortDir, config)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -168,7 +172,11 @@ class BookList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8081/rest/books/search/"+this.state.search+"?page="+currentPage+"&size="+this.state.booksPerPage)
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'},
+            withCredentials: true
+        };
+        axios.get("http://localhost:8081/rest/books/search/"+this.state.search+"?page="+currentPage+"&size="+this.state.booksPerPage, config)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
