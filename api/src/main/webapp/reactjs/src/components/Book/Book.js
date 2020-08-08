@@ -37,11 +37,7 @@ class Book extends Component {
     }
 
     findAllLanguages = () => {
-        let config = {
-            headers: {'Access-Control-Allow-Origin': '*'},
-            withCredentials: true
-        };
-        axios.get("http://localhost:8081/rest/books/languages", config)
+        axios.get("http://localhost:8081/rest/books/languages")
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -54,11 +50,7 @@ class Book extends Component {
     };
 
     findAllGenres = () => {
-        let config = {
-            headers: {'Access-Control-Allow-Origin': '*'},
-            withCredentials: true
-        };
-        axios.get("http://localhost:8081/rest/books/genres", config)
+        axios.get("http://localhost:8081/rest/books/genres")
             .then(response => response.data)
             .then((data) => {
                 this.setState({

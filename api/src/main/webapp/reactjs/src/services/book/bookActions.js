@@ -4,11 +4,7 @@ import axios from 'axios';
 export const saveBook = book => {
     return dispatch => {
         dispatch(saveBookRequest());
-        let config = {
-            headers: {'Access-Control-Allow-Origin': '*'},
-            withCredentials: true
-        };
-        axios.post("http://localhost:8081/rest/books", book, config)
+        axios.post("http://localhost:8081/rest/books", book, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -33,11 +29,7 @@ const fetchBookRequest = () => {
 export const fetchBook = bookId => {
     return dispatch => {
         dispatch(fetchBookRequest());
-        let config = {
-    headers: {'Access-Control-Allow-Origin': '*'},
-    withCredentials: true
-};
-        axios.get("http://localhost:8081/rest/books/"+bookId, config)
+        axios.get("http://localhost:8081/rest/books/"+bookId, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -56,11 +48,7 @@ const updateBookRequest = () => {
 export const updateBook = book => {
     return dispatch => {
         dispatch(updateBookRequest());
-        let config = {
-            headers: {'Access-Control-Allow-Origin': '*'},
-            withCredentials: true
-        };
-        axios.put("http://localhost:8081/rest/books", book, config)
+        axios.put("http://localhost:8081/rest/books", book, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -79,11 +67,7 @@ const deleteBookRequest = () => {
 export const deleteBook = bookId => {
     return dispatch => {
         dispatch(deleteBookRequest());
-        let config = {
-            headers: {'Access-Control-Allow-Origin': '*'},
-            withCredentials: true
-        };
-        axios.delete("http://localhost:8081/rest/books/"+bookId, config)
+        axios.delete("http://localhost:8081/rest/books/"+bookId, {withCredentials: true})
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -106,4 +90,3 @@ const bookFailure = error => {
         payload: error
     };
 };
-

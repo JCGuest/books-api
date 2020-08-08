@@ -1,5 +1,3 @@
-// controller
-
 package com.example.api.resource;
 
 import org.springframework.data.domain.Page;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 public interface Resource<T> {
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/search/{searchText}")
 	ResponseEntity<Page<T>> findAll(Pageable pageable, @PathVariable String searchText);
 
