@@ -18,6 +18,15 @@ public class ApiApplication implements CommandLineRunner {
 		SpringApplication.run(ApiApplication.class, args);
 	}
 
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/greeting-javaconfig").allowedOrigins("http://localhost:3000");
+			}
+		};
+	}
+
 	@Override
 	public void run(String... args) throws Exception {
 		for(int i=1; i<=1000; i++) {

@@ -37,7 +37,11 @@ class Book extends Component {
     }
 
     findAllLanguages = () => {
-        axios.get("http://localhost:8081/rest/books/languages")
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'},
+            withCredentials: true
+        }
+        axios.get("http://localhost:8081/rest/books/languages", config)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
